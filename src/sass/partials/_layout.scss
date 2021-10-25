@@ -1,0 +1,163 @@
+// Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
+
+
+
+// General layout of the page.
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+
+// Body
+body {
+  font: 100% $font-stack;
+  color: $font-color;
+  background: $background-color1;
+}
+
+header {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+
+  .about {
+    width: 45%;
+    text-align: center;
+    margin-top: 10em;
+
+    b {
+      font-family: $articles-stack;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-family: $headings-stack;
+      font-size: 1.2em;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 100%;
+    margin-bottom: 1em;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 10em;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  background: lighten($background-color1, 10);
+  margin: 2em auto;
+  width: 60%;
+  max-width: 960px;
+  text-align: center;
+}
+
+
+// Some nesting of elements within article element.
+article {
+  margin: 5em auto;
+  width: 90%;
+  background: lighten($background-color1, 10);
+
+  p {
+    font-size: $article-font-size;
+    width: 70%;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: left;
+  }
+
+  img {
+    max-width: 100%;
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 0.3em;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+  input[type=submit] {
+    width: 50%;
+    background-color: #45a459;
+    border: none;
+    padding: 0.5em;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+  }
+
+  input[type=hidden] {
+    display: none;
+  }
+
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+
+  th {
+    font-size: 1.2em;
+  }
+
+  tr {
+    height: 5em;
+  }
+
+  tbody:nth-child(even) {
+    background: $background-color1;
+  }
+
+    .editbutton, .deletebutton {
+      margin: 1em 0 1em 0;
+    }
+
+  .mobileheading {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#tokencheck button {
+  @extend a;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+
+
+
+

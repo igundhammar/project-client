@@ -1,0 +1,63 @@
+// Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
+
+
+// Components that are reused on the page.
+a {
+  color: $font-color;
+  font-size: 1.1em;
+  text-decoration: none;
+  color: #0000c0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 3em;
+  font-family: $headings-stack;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: $articles-stack;
+  text-decoration: underline;
+}
+
+h3 {
+  font-family: $articles-stack;
+  margin: 0;
+  padding: 1em;
+}
+
+h4 {
+  @extend h3
+}
+
+#top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1em 1em 0 1em;
+  font-size: 3em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.editbutton {
+  background: #b9913c;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.deletebutton {
+  background: #c22f2f;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Ida Gundhammar CV</title>
+</head>
+<body>
+<div class="flex">
+    <header>
+        <div class="about">
+            <div class="sticky">
+            <img src="images/image1.jpg" alt="">
+            <b>Ida Gundhammar</b>
+            <p>26 år, Duved, Studerande</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid eligendi eum minus necessitatibus quam, quidem quis recusandae veniam voluptatibus!</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Mina erfarenheter</h1>
+        <article class="content">
+            <h2>Kurser</h2>
+            <table id="coursesOutput">
+            </table>
+        </article>
+        <article class="content" id="coursesform">
+            <h2>Lägg till kurs</h2>
+            <div class="addform">
+                <form action="index.html" >
+                    <label for="courseid" class="hidden">
+                        <input type="hidden" name="courseid" id="courseid">
+                    </label>
+                    <label for="coursecode">Kurskod
+                        <input type="text" name="coursecode" id="coursecode" required>
+                    </label>
+
+                    <label for="coursename">Kursnamn
+                        <input type="text" name="coursename" id="coursename" required>
+                    </label>
+
+                    <label for="courseuniversity">Lärosäte
+                        <input type="text" name="courseuniversity" id="courseuniversity" required>
+                    </label>
+
+                    <label for="coursestartdate">Startdatum
+                        <input type="date" name="coursestartdate" id="coursestartdate" required>
+                    </label>
+                    <label for="courseenddate">Slutdatum
+                        <input type="date" name="courseenddate" id="courseenddate" required>
+                    </label>
+                    <label for="submitCourse">
+                        <input type="submit" name="submitCourse" id="submitCourse" value="Lägg till">
+                    </label>
+                    <label for="updateCourse">
+                        <input type="submit" name="updateCourse" id="updateCourse" value="Uppdatera">
+                    </label>
+                </form>
+            </div>
+        </article>
+        <article class="content">
+            <h2>Mina arbetserfarenheter</h2>
+            <table id="jobsOutput">
+            </table>
+        </article>
+        <article class="content" id="workform">
+            <h2>Arbetserfarenhet</h2>
+            <div class="addform">
+                <form action="index.html">
+                    <label for="jobid" class="hidden">
+                        <input type="number" name="jobid" id="jobid">
+                    </label>
+                    <label for="jobplace">Företag
+                        <input type="text" name="jobplace" id="jobplace">
+                    </label>
+                    <label for="jobtitle">Titel
+                        <input type="text" name="jobtitle" id="jobtitle">
+                    </label>
+                    <label for="jobstartdate">Startdatum
+                        <input type="date" name="jobstartdate" id="jobstartdate">
+                    </label>
+
+                    <label for="jobenddate">Slutdatum
+                        <input type="date" name="jobenddate" id="jobenddate">
+                    </label>
+                    <label for="submitJob">
+                        <input type="submit" name="submitJob" id="submitJob" value="Lägg till">
+                    </label>
+                    <label for="updateJob">
+                        <input type="submit" name="updateJob" id="updateJob" value="Uppdatera">
+                    </label>
+                </form>
+            </div>
+        </article>
+        <article class="content">
+            <h2>Webbplatser</h2>
+            <table id="websitesOutput">
+            </table>
+        </article>
+        <article class="content" id="websiteform">
+            <h2>Lägg till webbplats</h2>
+            <div class="addform">
+                <form action="index.html">
+                    <label for="websiteid" class="hidden">
+                        <input type="hidden" name="websiteid" id="websiteid">
+                    </label>
+                    <label for="websitetitle">Titel
+                        <input type="text" name="websitetitle" id="websitetitle">
+                    </label>
+                    <label for="websitedescription">Beskrivning
+                        <input type="text" name="websitedescription" id="websitedescription">
+                    </label>
+                    <label for="websiteurl">Länk
+                        <input type="text" name="websiteurl" id="websiteurl">
+                    </label>
+                    <label for="submitWebsite">
+                        <input type="submit" name="submitWebsite" id="submitWebsite" value="Lägg till">
+                    </label>
+                    <label for="updateWebsite">
+                        <input type="submit" name="updateWebsite" id="updateWebsite" value="Uppdatera">
+                    </label>
+                </form>
+            </div>
+        </article>
+    </div>
+</div>
+<footer>
+    <h3>Ida Gundhammar</h3>
+    <h4>Mittuniversitetet HT20</h4>
+    <div id="tokencheck">
+
+    </div>
+</footer>
+<button onclick="scrollToTop()" id="top">🠕</button>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
