@@ -16,7 +16,7 @@ let auth_token = localStorage.getItem('auth_token');
 
 
 // Eventlisteners
-window.addEventListener('load', getAllCourses);
+showCoursesEl.addEventListener('click', getAllCourses);
 addCourseButtonEl.addEventListener('click', addCourse);
 updateCourseButtonEl.addEventListener('click', updateCourse);
 
