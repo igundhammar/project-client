@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="./images/favicon.png">
     <title>Ida Gundhammar CV</title>
 </head>
 <body>
@@ -13,17 +14,27 @@
             <div class="sticky">
             <img src="images/image1.jpg" alt="">
             <b>Ida Gundhammar</b>
-            <p>26 år, Duved, Studerande</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid eligendi eum minus necessitatibus quam, quidem quis recusandae veniam voluptatibus!</p>
+            <p>Webbutvecklingsstudent</p>
+                <ul>
+                    <li><a href="mailto:ida.gundhammar@hotmail.com"><img src="./images/email.png" alt=""></a></li>
+                    <li><a href="tel:073-6794070"><img src="./images/phone.png" alt=""></a></li>
+                    <li><a href="https://github.com/igundhammar"><img src="./images/github.png" alt=""></a></li>
+                    <li><a href="https://www.linkedin.com/in/ida-g-79034a220/"><img src="./images/linkedin.png" alt=""></a></li>
+                </ul>
             </div>
         </div>
     </header>
-
     <div class="container">
-        <h1>Mina erfarenheter</h1>
+        <nav>
+            <ul>
+                <li id="home"><button>Start</button></li>
+                <li id="courses"><button>Kurser</button></li>
+                <li id="jobs"><button>Jobb</button></li>
+                <li id="websites"><button>Hemsidor</button></li>
+            </ul>
+        </nav>
         <article class="content">
-            <h2>Kurser</h2>
-            <table id="coursesOutput">
+            <table id="output">
             </table>
         </article>
         <article class="content" id="coursesform">
@@ -31,20 +42,17 @@
             <div class="addform">
                 <form action="index.html" >
                     <label for="courseid" class="hidden">
-                        <input type="hidden" name="courseid" id="courseid">
+                        <input type="number" name="courseid" id="courseid">
                     </label>
                     <label for="coursecode">Kurskod
                         <input type="text" name="coursecode" id="coursecode" required>
                     </label>
-
                     <label for="coursename">Kursnamn
                         <input type="text" name="coursename" id="coursename" required>
                     </label>
-
                     <label for="courseuniversity">Lärosäte
                         <input type="text" name="courseuniversity" id="courseuniversity" required>
                     </label>
-
                     <label for="coursestartdate">Startdatum
                         <input type="date" name="coursestartdate" id="coursestartdate" required>
                     </label>
@@ -60,13 +68,8 @@
                 </form>
             </div>
         </article>
-        <article class="content">
-            <h2>Mina arbetserfarenheter</h2>
-            <table id="jobsOutput">
-            </table>
-        </article>
         <article class="content" id="workform">
-            <h2>Arbetserfarenhet</h2>
+            <h2>Lägg till arbetserfarenhet</h2>
             <div class="addform">
                 <form action="index.html">
                     <label for="jobid" class="hidden">
@@ -81,7 +84,6 @@
                     <label for="jobstartdate">Startdatum
                         <input type="date" name="jobstartdate" id="jobstartdate">
                     </label>
-
                     <label for="jobenddate">Slutdatum
                         <input type="date" name="jobenddate" id="jobenddate">
                     </label>
@@ -94,17 +96,12 @@
                 </form>
             </div>
         </article>
-        <article class="content">
-            <h2>Webbplatser</h2>
-            <table id="websitesOutput">
-            </table>
-        </article>
         <article class="content" id="websiteform">
             <h2>Lägg till webbplats</h2>
             <div class="addform">
                 <form action="index.html">
                     <label for="websiteid" class="hidden">
-                        <input type="hidden" name="websiteid" id="websiteid">
+                        <input type="number" name="websiteid" id="websiteid">
                     </label>
                     <label for="websitetitle">Titel
                         <input type="text" name="websitetitle" id="websitetitle">

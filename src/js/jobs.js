@@ -1,5 +1,4 @@
 let showJobsEl = document.getElementById('jobs');
-let jobsOutputEl = document.getElementById('jobsOutput');
 let addJobButtonEl = document.getElementById('submitJob');
 let updateJobButtonEl = document.getElementById('updateJob');
 let jobId = document.getElementById('jobid');
@@ -8,7 +7,7 @@ let jobTitleInput = document.getElementById('jobtitle');
 let jobStartdateInput = document.getElementById('jobstartdate');
 let jobEnddateInput = document.getElementById('jobenddate');
 
-window.addEventListener('load', getAllJobs);
+showJobsEl.addEventListener('click', getAllJobs);
 addJobButtonEl.addEventListener('click', addJob);
 updateJobButtonEl.addEventListener('click', updateJob);
 
@@ -16,27 +15,31 @@ updateJobButtonEl.addEventListener('click', updateJob);
 
 // Jobs
 function getAllJobs() {
+
     // http://localhost/writeable/projekt-restapi/workexperiences.php
     // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
     fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php')
         .then(response => response.json()
             .then(data => {
-                jobsOutputEl.innerHTML =
-                    `<tr class="desktopheadings">
+                outputEl.innerHTML = "";
+                outputEl.innerHTML =
+                    `<h2>Mina arbetserfarenheter</h2>
+                        <tr class="desktopheadings">
                         <th>Företag</th>
                         <th>Titel</th>
                         <th>Startdatum</th>
                         <th>Slutdatum</th>
+                        <th class="edit">Ändra</th>
                     </tr>`
                 data.forEach(job => {
-                    jobsOutputEl.innerHTML +=
+                    outputEl.innerHTML +=
                         `<tr>
                            <td><span class="mobileheading">Företag:</span> ${job.place} </td>
                            <td><span class="mobileheading">Titel:</span> ${job.title} </td>
                            <td><span class="mobileheading">Startdatum:</span> ${job.startdate} </td>
                            <td><span class="mobileheading">Slutdatum:</span> ${job.enddate} </td>
-                           <td><button class="editbutton" onclick="editJob('${job.place}', '${job.title}', '${job.startdate}', '${job.enddate}', '${job.id}')">Redigera</button>
-                           <button class="deletebutton" onclick="deleteJob('${job.id}')">Radera</button></td>
+                           <td class="edit"><button class="editbutton" onclick="editJob('${job.place}', '${job.title}', '${job.startdate}', '${job.enddate}', '${job.id}')"><img src="./images/edit.png" alt=""></button>
+                           <button class="deletebutton" onclick="deleteJob('${job.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
                 checkLoggedInUser();

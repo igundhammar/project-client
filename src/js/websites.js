@@ -1,5 +1,4 @@
 let showWebsitesEl = document.getElementById('websites');
-let websitesOutputEl = document.getElementById('websitesOutput');
 let addWebsiteButtonEl = document.getElementById('submitWebsite');
 let updateWebsiteButtonEl = document.getElementById('updateWebsite');
 let websiteId = document.getElementById('websiteid');
@@ -7,7 +6,7 @@ let websiteTitleInput = document.getElementById('websitetitle');
 let websiteDescriptionInput = document.getElementById('websitedescription');
 let websiteUrlInput = document.getElementById('websiteurl');
 
-window.addEventListener('load', getAllWebsites);
+showWebsitesEl.addEventListener('click', getAllWebsites);
 addWebsiteButtonEl.addEventListener('click', addWebsite);
 updateWebsiteButtonEl.addEventListener('click', updateWebsite);
 
@@ -19,20 +18,23 @@ function getAllWebsites() {
     fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/websites.php')
         .then(response => response.json()
             .then(data => {
-                websitesOutputEl.innerHTML =
-                    `<tr class="desktopheadings">
+                outputEl.innerHTML = "";
+                outputEl.innerHTML =
+                    `<h2>Webbplatser</h2>
+                        <tr class="desktopheadings">
                         <th>Titel</th>
                         <th>Beskrivning</th>
                         <th>Länk</th>
+                        <th class="edit">Ändra</th>
                     </tr>`
                 data.forEach(website => {
-                    websitesOutputEl.innerHTML +=
+                    outputEl.innerHTML +=
                         `<tr>
                            <td><span class="mobileheading">Titel:</span> ${website.title} </td>
                            <td><span class="mobileheading">Beskrivning:</span> ${website.description} </td>
                            <td><span class="mobileheading">Länk:</span><a href="${website.url}">Länk</a></td>
-                           <td><button class="editbutton" onclick="editWebsite('${website.title}', '${website.description}', '${website.url}', '${website.id}')">Redigera</button>
-                           <button class="deletebutton" onclick="deleteWebsite('${website.id}')">Radera</button></td>
+                           <td class="change"><button class="editbutton" onclick="editWebsite('${website.title}', '${website.description}', '${website.url}', '${website.id}')"><img src="./images/edit.png" alt=""></button>
+                           <button class="deletebutton" onclick="deleteWebsite('${website.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
                 checkLoggedInUser();

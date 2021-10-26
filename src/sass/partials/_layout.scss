@@ -51,6 +51,25 @@ header {
     top: 10em;
     background: rgba(255, 255, 255, 0.61);
     padding: 2em 4em;
+
+    ul {
+      list-style-type: none;
+      font-size: 1.2em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 2em auto;
+      padding: 0;
+      gap: 0.5em;
+      width: 80%;
+
+      li {
+
+        img {
+          width: 40%;
+          border-radius: 0;
+        }
+      }
+    }
   }
 }
 
@@ -124,8 +143,18 @@ form {
 
 table {
   width: 100%;
-  text-align: left;
   border-collapse: collapse;
+  font-family: $headings-stack;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5em;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 1.5em;
+  }
 
   th {
     font-size: 1.2em;
@@ -141,10 +170,19 @@ table {
 
     .editbutton, .deletebutton {
       margin: 1em 0 1em 0;
+      background: transparent;
+      padding: 0.5em;
+      border: none;
+      width: 40%;
+      cursor: pointer;
     }
 
   .mobileheading {
     display: none;
+  }
+
+  .edit {
+    width: 15%;
   }
 }
 
@@ -171,9 +209,40 @@ nav {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+
+    button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
+.skills {
+
+  width: 70%;
+  margin: 0 auto;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      margin: 2em;
+      width: 15%;
+      list-style: none;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
 
 
 

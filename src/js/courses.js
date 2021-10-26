@@ -3,7 +3,7 @@
 
 // Declaring variables
 let showCoursesEl = document.getElementById('courses');
-let coursesOutputEl = document.getElementById('coursesOutput');
+let outputEl = document.getElementById('output');
 let addCourseButtonEl = document.getElementById('submitCourse');
 let updateCourseButtonEl = document.getElementById('updateCourse');
 let courseId = document.getElementById('courseid');
@@ -16,10 +16,10 @@ let auth_token = localStorage.getItem('auth_token');
 
 
 // Eventlisteners
+window.addEventListener('load', checkLoggedInUser);
 showCoursesEl.addEventListener('click', getAllCourses);
 addCourseButtonEl.addEventListener('click', addCourse);
 updateCourseButtonEl.addEventListener('click', updateCourse);
-
 
 
 // Function to get all courses from database with fetch. Loop result and write table with the data fetched.
@@ -29,31 +29,32 @@ function getAllCourses() {
     fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php')
         .then(response => response.json()
             .then(data => {
-                coursesOutputEl.innerHTML = "";
-                coursesOutputEl.innerHTML =
-                    `<tr class="desktopheadings">
+                outputEl.innerHTML = "";
+                outputEl.innerHTML =
+                    `<h2>Kurser</h2>
+                        <tr class="desktopheadings">
                         <th>Kurskod</th>
                         <th>Kursnamn</th>
                         <th>Lärosäte</th>
                         <th>Startdatum</th>
                         <th>Slutdatum</th>
+                        <th class="edit">Ändra</th>
                     </tr>`
                 data.forEach(course => {
-                    coursesOutputEl.innerHTML +=
+                    outputEl.innerHTML +=
                         `<tr>
                            <td><span class="mobileheading">Kurskod: </span> ${course.code} </td>
                            <td><span class="mobileheading">Kursnamn: </span> ${course.name} </td>
                            <td><span class="mobileheading">Lärosäte: </span> ${course.university} </td>
                            <td><span class="mobileheading">Startdatum: </span>${course.startdate}</td>
                            <td><span class="mobileheading">Slutdatum: </span>${course.enddate}</td>
-                           <td><button class="editbutton" onclick="editCourse('${course.code}', '${course.name}', '${course.university}', '${course.startdate}','${course.enddate}', '${course.id}' )">Redigera</button>
-                           <button class="deletebutton" onclick="deleteCourse('${course.id}')">Radera</button></td>
+                           <td class="edit"><button class="editbutton" onclick="editCourse('${course.code}', '${course.name}', '${course.university}', '${course.startdate}','${course.enddate}', '${course.id}' )"><img src="./images/edit.png" alt=""></button>
+                           <button class="deletebutton" onclick="deleteCourse('${course.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
                 checkLoggedInUser();
             }))
 }
-
 
 
 // Function to add a new course. Get values from inputs and use method POST to post data to the database.
