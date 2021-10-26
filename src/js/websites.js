@@ -1,5 +1,5 @@
+let showWebsitesEl = document.getElementById('websites');
 let websitesOutputEl = document.getElementById('websitesOutput');
-
 let addWebsiteButtonEl = document.getElementById('submitWebsite');
 let updateWebsiteButtonEl = document.getElementById('updateWebsite');
 let websiteId = document.getElementById('websiteid');

@@ -10,7 +10,7 @@ let editButton = document.getElementsByClassName('editbutton');
 
 function checkLoggedInUser() {
     if (auth_token == null || auth_token == undefined) {
-        tokenCheckEl.innerHTML = `<h4><a href="https://studenter.miun.se/~idgu2001/writeable/projekt-login">Logga in som administratör</a></h4>`;
+        tokenCheckEl.innerHTML = `<h4><a href="https://studenter.miun.se/~idgu2001/writeable/projekt-login" id="loginlink">Logga in som administratör</a></h4>`;
         for ( let i=0; i<editButton.length; i++) {
             editButton[i].style.display = "none";
         }

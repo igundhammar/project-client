@@ -6,16 +6,17 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
+  background: url("../images/image2.jpg");
+  background-size: cover;
 }
-
 
 // Body
 body {
   font: 100% $font-stack;
   color: $font-color;
-  background: $background-color1;
 }
 
 header {
@@ -24,7 +25,7 @@ header {
   justify-content: center;
 
   .about {
-    width: 45%;
+    width: 55%;
     text-align: center;
     margin-top: 10em;
 
@@ -48,6 +49,8 @@ header {
   .sticky {
     position: sticky;
     top: 10em;
+    background: rgba(255, 255, 255, 0.61);
+    padding: 2em 4em;
   }
 }
 
@@ -56,8 +59,8 @@ header {
 }
 
 .container {
-  background: lighten($background-color1, 10);
-  margin: 2em auto;
+  background: rgb(255, 255, 255);
+  margin: 3em auto 0 auto;
   width: 60%;
   max-width: 960px;
   text-align: center;
@@ -68,7 +71,7 @@ header {
 article {
   margin: 5em auto;
   width: 90%;
-  background: lighten($background-color1, 10);
+  background: rgba(255, 255, 255, 0.61);
 
   p {
     font-size: $article-font-size;
@@ -154,6 +157,21 @@ table {
   border: 0;
   background: transparent;
   cursor: pointer;
+}
+
+#loginlink {
+  color: black;
+}
+
+nav {
+  font-size: 1.7em;
+  font-family: $articles-stack;
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+  }
 }
 
 

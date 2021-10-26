@@ -1,5 +1,5 @@
+let showJobsEl = document.getElementById('jobs');
 let jobsOutputEl = document.getElementById('jobsOutput');
-
 let addJobButtonEl = document.getElementById('submitJob');
 let updateJobButtonEl = document.getElementById('updateJob');
 let jobId = document.getElementById('jobid');

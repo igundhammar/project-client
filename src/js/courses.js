@@ -2,6 +2,7 @@
 
 
 // Declaring variables
+let showCoursesEl = document.getElementById('courses');
 let coursesOutputEl = document.getElementById('coursesOutput');
 let addCourseButtonEl = document.getElementById('submitCourse');
 let updateCourseButtonEl = document.getElementById('updateCourse');
