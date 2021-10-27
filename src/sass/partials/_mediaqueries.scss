@@ -1,101 +1,17 @@
 // Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
 
 // Media queries.
-@media screen and (max-width: 1050px) {
-
-  body {
-    overflow-x: hidden;
+@mixin phone {
+  @media screen and (max-width: 900px) {
+    @content;
   }
+}
 
-  .flex {
-    display: block;
-  }
-
-  header {
-    width: 100%;
-
-    li {
-      padding: 0.2em;
-    }
-
-    .mainmenu, .dropdowncontent {
-      display: none;
-    }
-
-    .dropdown {
-      display: inline-block;
-    }
-
-    .show {
-      display: block;
-    }
-  }
-
-  .container {
-    width: 90%;
-
-    .content {
-      width: 80%;
-
-      article {
-        width: 95%;
-      }
-    }
-  }
-
-  table {
-    display: flex;
-    flex-direction: column;
-
-    tr {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 1em;
-    }
-
-    td {
-      display: flex;
-      gap: 0.5em;
-    }
-
-    tbody {
-      padding-bottom: 2em;
-    }
-    .mobileheading {
-      display: block;
-    }
-
-    .desktopheadings {
-      display: none;
-    }
-  }
-
-  form {
-    grid-template-columns: 1fr;
-    gap: 2em;
-
-    input[type=submit] {
-      width: 70%;
-    }
+@mixin tablet-laptop {
+  @media screen and (min-width: 901px) and (max-width: 1400px) {
+    @content
   }
 }
 
 
-@media screen and (max-width: 600px) {
 
- article {
-   padding: 0.5em;
-
-   p, img {
-     width: 80%;
-   }
- }
-
-  header {
-
-    ul {
-      padding-left: 1em;
-    }
-  }
-}

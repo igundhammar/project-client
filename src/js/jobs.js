@@ -34,10 +34,10 @@ function getAllJobs() {
                 data.forEach(job => {
                     outputEl.innerHTML +=
                         `<tr>
-                           <td><span class="mobileheading">Företag:</span> ${job.place} </td>
-                           <td><span class="mobileheading">Titel:</span> ${job.title} </td>
-                           <td><span class="mobileheading">Startdatum:</span> ${job.startdate} </td>
-                           <td><span class="mobileheading">Slutdatum:</span> ${job.enddate} </td>
+                           <td><span class="mobileheading">Företag: </span>&nbsp; ${job.place} </td>
+                           <td><span class="mobileheading">Titel: </span>&nbsp; ${job.title} </td>
+                           <td><span class="mobileheading">Startdatum </span> &nbsp;${job.startdate} </td>
+                           <td><span class="mobileheading">Slutdatum: </span>&nbsp; ${job.enddate} </td>
                            <td class="edit"><button class="editbutton" onclick="editJob('${job.place}', '${job.title}', '${job.startdate}', '${job.enddate}', '${job.id}')"><img src="./images/edit.png" alt=""></button>
                            <button class="deletebutton" onclick="deleteJob('${job.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`

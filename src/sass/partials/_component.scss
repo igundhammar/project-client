@@ -1,6 +1,6 @@
 // Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
 
-
+@import '_mediaqueries.scss';
 // Components that are reused on the page.
 a {
   color: $font-color;
@@ -22,7 +22,6 @@ h1 {
 h2 {
   font-size: 2em;
   font-family: $articles-stack;
-  text-decoration: underline;
 }
 
 h3 {
@@ -44,6 +43,13 @@ h4 {
   background: transparent;
   border: none;
   cursor: pointer;
+  @include phone {
+    right: -30px;
+  }
+
+  img {
+    width: 1.2em;
+  }
 }
 
 

@@ -43,17 +43,20 @@ function getAllCourses() {
                 data.forEach(course => {
                     outputEl.innerHTML +=
                         `<tr>
-                           <td><span class="mobileheading">Kurskod: </span> ${course.code} </td>
-                           <td><span class="mobileheading">Kursnamn: </span> ${course.name} </td>
-                           <td><span class="mobileheading">Lärosäte: </span> ${course.university} </td>
-                           <td><span class="mobileheading">Startdatum: </span>${course.startdate}</td>
-                           <td><span class="mobileheading">Slutdatum: </span>${course.enddate}</td>
+                           <td><span class="mobileheading">Kurskod:</span>&nbsp;${course.code} </td>
+                           <td><span class="mobileheading">Kursnamn: </span> &nbsp;${course.name} </td>
+                           <td><span class="mobileheading">Lärosäte: </span>&nbsp; ${course.university} </td>
+                           <td><span class="mobileheading">Startdatum: </span>&nbsp;${course.startdate}</td>
+                           <td><span class="mobileheading">Slutdatum: </span>&nbsp;${course.enddate}</td>
                            <td class="edit"><button class="editbutton" onclick="editCourse('${course.code}', '${course.name}', '${course.university}', '${course.startdate}','${course.enddate}', '${course.id}' )"><img src="./images/edit.png" alt=""></button>
                            <button class="deletebutton" onclick="deleteCourse('${course.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
                 checkLoggedInUser();
             }))
+        .catch(error => {
+            console.log('Error:', error)
+        })
 }
 
 

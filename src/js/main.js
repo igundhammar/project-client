@@ -19,7 +19,7 @@ function getStartText() {
             <p>Kul att du har hittat hit!</p>
                 <p>Jag gillar skidor och skoter. Och hund och sånt. Och så gillar jag webbutveckling, åtminstone när det går bra.
                 Det var det. Hejdå!</p>
-                <p>P.S jag har sjukt bra musiksmak!</p>
+                <p>P.S jag har sjukt bra musiksmak! 🎵 🎶</p>
                 <h3>Mina färdigheter</h3>
                   <div class="skills">
                    <ul>
@@ -29,6 +29,9 @@ function getStartText() {
                     <li><img src="./images/php.png" alt=""></li>
                     <li><img src="./images/mysql.png" alt=""></li>
                     <li><img src="./images/ps.png" alt=""></li>
+                    <li><img src="./images/sass.png" alt=""></li>
+                    <li><img src="./images/typescript.png" alt=""></li>
+                    <li><img src="./images/adobexd.png" alt=""></li>
                    </ul>
                  </div>`;
 }
@@ -70,4 +73,31 @@ function logout() {
 // Scroll to top function.
 function scrollToTop() {
     window.scrollTo(0, 0);
+}
+
+// Simple jQuery for dropdown-function on mobile menu.
+$(document).ready(function() {
+    $('input[type="checkbox"]').click(function() {
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).toggle();
+    });
+});
+
+
+function dropdownFunction() {
+    document.getElementById("tabletdropdown").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+    if (!event.target.matches('hamburgerbutton')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
+        for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
 }

@@ -30,9 +30,9 @@ function getAllWebsites() {
                 data.forEach(website => {
                     outputEl.innerHTML +=
                         `<tr>
-                           <td><span class="mobileheading">Titel:</span> ${website.title} </td>
-                           <td><span class="mobileheading">Beskrivning:</span> ${website.description} </td>
-                           <td><span class="mobileheading">Länk:</span><a href="${website.url}">Länk</a></td>
+                           <td><span class="mobileheading">Titel: </span>&nbsp; ${website.title} </td>
+                           <td><span class="mobileheading">Beskrivning: </span>&nbsp; ${website.description} </td>
+                           <td><span class="mobileheading">Länk: </span>&nbsp;<a href="${website.url}">Länk</a></td>
                            <td class="change"><button class="editbutton" onclick="editWebsite('${website.title}', '${website.description}', '${website.url}', '${website.id}')"><img src="./images/edit.png" alt=""></button>
                            <button class="deletebutton" onclick="deleteWebsite('${website.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
