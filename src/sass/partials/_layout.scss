@@ -24,7 +24,7 @@ header {
   width: 40%;
   display: flex;
   justify-content: center;
-  @include phone {
+  @include large-phone {
     width: 100%;
   }
 
@@ -32,7 +32,7 @@ header {
     width: 55%;
     text-align: center;
     margin-top: 10em;
-    @include phone {
+    @include large-phone {
       width: 95%;
       margin-top: 0.5em;
     }
@@ -59,8 +59,8 @@ header {
   }
 
   .aboutimage {
-    @include phone {
-      width: 80%;
+    @include large-phone {
+      width: 75%;
       margin: 0 auto;
     }
   }
@@ -74,7 +74,7 @@ header {
     top: 10em;
     background: rgba(255, 255, 255, 0.61);
     padding: 2em 4em;
-    @include phone {
+    @include large-phone {
       padding: 1em 2em;
     }
     @include tablet-laptop {
@@ -90,8 +90,8 @@ header {
       padding: 0;
       gap: 0.5em;
       width: 80%;
-      @include phone {
-        width: 90%;
+      @include large-phone {
+        width: 80%;
 
       }
 
@@ -108,18 +108,18 @@ header {
 
 .flex {
   display: flex;
-  @include phone {
+  @include large-phone {
     display: block;
   }
 }
 
 .container {
   background: rgb(255, 255, 255);
-  margin: 3em;
+  margin: 3em 3em 0 3em;
   width: 60%;
   max-width: 960px;
   text-align: center;
-  @include phone {
+  @include large-phone {
     width: 95%;
     margin: 3em auto;
   }
@@ -134,6 +134,12 @@ article {
   margin: 5em auto;
   width: 90%;
   background: rgba(255, 255, 255, 0.61);
+  @include large-phone {
+    padding-bottom: 3em;
+  }
+  @include small-phone {
+    padding-bottom: 3em;
+  }
 
   p {
     font-size: $article-font-size;
@@ -141,7 +147,7 @@ article {
     margin: 0 auto;
     padding: 1em;
     text-align: left;
-    @include phone {
+    @include large-phone {
       width: 100%;
     }
     @include tablet-laptop {
@@ -157,9 +163,13 @@ article {
 }
 
 form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  @include large-phone {
+    width: 85%;
+  }
 
   label {
     display: flex;
@@ -173,20 +183,28 @@ form {
     padding: 0.3em;
     border: none;
     border-bottom: 1px solid black;
+    margin-bottom: 1em;
   }
 
   input[type=submit] {
-    width: 50%;
-    background-color: #45a459;
+    background: rgb(105,154,153);
+    background: linear-gradient(248deg, rgba(105,154,153,1) 0%, rgba(86,153,136,1) 58%);
     border: none;
-    padding: 0.5em;
-    border-bottom: 1px solid black;
+    border-radius: 20px;
+    padding: .8em;
     font-weight: bold;
+    cursor: pointer;
   }
 
   input[type=hidden] {
     display: none;
   }
+
+  input:focus {
+    outline: none;
+  }
+
+
 
 }
 
@@ -194,7 +212,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: $headings-stack;
-  @include phone {
+  @include large-phone {
     display: flex;
     flex-direction: column;
   }
@@ -220,7 +238,7 @@ table {
 
   tr {
     height: 5em;
-    @include phone {
+    @include large-phone {
       display: flex;
       flex-direction: column;
       height: auto;
@@ -239,7 +257,7 @@ table {
   }
 
   td {
-    @include phone {
+    @include large-phone {
       display: flex;
     }
     @include tablet-laptop {
@@ -258,11 +276,14 @@ table {
       border: none;
       width: 40%;
       cursor: pointer;
+      @include tablet-laptop {
+        width: 100%;
+      }
     }
 
   .mobileheading {
     display: none;
-    @include phone {
+    @include large-phone {
       display: block;
     }
     @include tablet-laptop {
@@ -272,7 +293,7 @@ table {
     }
   .desktopheadings {
     display: table-row;
-    @include phone {
+    @include large-phone {
       display: none;
     }
     @include tablet-laptop {
@@ -282,6 +303,14 @@ table {
 
   .edit {
     width: 15%;
+    @include large-phone {
+      width: 35%;
+      gap: 3em;
+    }
+    @include tablet-laptop {
+      width: 40%;
+      gap: 3em;
+    }
   }
 }
 
@@ -294,6 +323,7 @@ table {
   border: 0;
   background: transparent;
   cursor: pointer;
+  color: black;
 }
 
 #loginlink {
@@ -308,7 +338,7 @@ nav {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
-    @include phone {
+    @include large-phone {
       display: block;
       margin: 0;
       padding: 0;
@@ -318,7 +348,7 @@ nav {
       display: block;
       position: relative;
       padding: 0.2em 0;
-      @include phone {
+      @include large-phone {
         padding: 1em;
       }
     }
@@ -353,7 +383,7 @@ nav {
 .skills {
   width: 70%;
   margin: 0 auto;
-  @include phone {
+  @include large-phone {
     width: 100%;
   }
 
@@ -361,7 +391,7 @@ nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    @include phone {
+    @include large-phone {
       padding: 0;
       margin: 0 auto;
       justify-content: center;
@@ -376,7 +406,7 @@ nav {
       margin: 2em;
       width: 15%;
       list-style: none;
-      @include phone {
+      @include large-phone {
         width: 25%;
       }
       @include tablet-laptop {

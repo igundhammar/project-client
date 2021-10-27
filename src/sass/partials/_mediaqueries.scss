@@ -1,14 +1,20 @@
 // Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
 
 // Media queries.
-@mixin phone {
+@mixin tablet-laptop {
+  @media screen and (min-width: 901px) and (max-width: 1400px) {
+    @content
+  }
+}
+
+@mixin large-phone {
   @media screen and (max-width: 900px) {
     @content;
   }
 }
 
-@mixin tablet-laptop {
-  @media screen and (min-width: 901px) and (max-width: 1400px) {
+@mixin small-phone {
+  @media screen and (min-width: 300px) and (max-width: 899px) {
     @content
   }
 }

@@ -43,6 +43,9 @@ function getAllJobs() {
                         </tr>`
                 })
                 checkLoggedInUser();
+                coursesFormsEl.style.display = "none";
+                jobsFormsEl.style.display = "block";
+                websitesFormsEl.style.display = "none";
             }))
 }
 

@@ -38,6 +38,9 @@ function getAllWebsites() {
                         </tr>`
                 })
                 checkLoggedInUser();
+                coursesFormsEl.style.display = "none";
+                jobsFormsEl.style.display = "none";
+                websitesFormsEl.style.display = "block";
             }))
 }
 

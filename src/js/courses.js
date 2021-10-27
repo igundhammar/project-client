@@ -52,7 +52,11 @@ function getAllCourses() {
                            <button class="deletebutton" onclick="deleteCourse('${course.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
-                checkLoggedInUser();
+                if (checkLoggedInUser()) {
+                    coursesFormsEl.style.display = "block";
+                    jobsFormsEl.style.display = "none";
+                    websitesFormsEl.style.display = "none";
+                }
             }))
         .catch(error => {
             console.log('Error:', error)

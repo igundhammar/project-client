@@ -34,6 +34,9 @@ function getStartText() {
                     <li><img src="./images/adobexd.png" alt=""></li>
                    </ul>
                  </div>`;
+    coursesFormsEl.style.display = "none";
+    jobsFormsEl.style.display = "none";
+    websitesFormsEl.style.display = "none";
 }
 
 
@@ -61,6 +64,7 @@ function checkLoggedInUser() {
         websitesFormsEl.style.display = "none";
     } else {
         tokenCheckEl.innerHTML = `<h4><button class="logout" onclick="logout()">Logga ut</button></h4>`;
+        return true;
     }
 }
 

@@ -43,7 +43,7 @@ h4 {
   background: transparent;
   border: none;
   cursor: pointer;
-  @include phone {
+  @include large-phone {
     right: -30px;
   }
 
