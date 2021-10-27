@@ -13,6 +13,8 @@ let courseUniversityInput = document.getElementById('courseuniversity');
 let courseStartdateInput = document.getElementById('coursestartdate');
 let courseEnddateInput = document.getElementById('courseenddate');
 let auth_token = localStorage.getItem('auth_token');
+let coursesMessageEl = document.getElementById('coursesmessage');
+let clearCoursesEl = document.getElementById('clearcourses');
 
 
 // Eventlisteners
@@ -89,7 +91,9 @@ function addCourse(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllCourses();
+            coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
+            clearCoursesEl.reset();
         })
         .catch(error => {
             console.log('Error:', error)
@@ -105,6 +109,8 @@ function editCourse(code, name, university, startdate, enddate, id) {
     courseUniversityInput.value = university;
     courseStartdateInput.value = startdate;
     courseEnddateInput.value = enddate;
+    courseCodeInput.focus();
+    addCourseButtonEl.disabled = true;
 
 }
 
@@ -135,7 +141,10 @@ function updateCourse(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllCourses();
+            coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
+            clearCoursesEl.reset();
+            addCourseButtonEl.disabled = false;
         })
         .catch(error => {
             console.log('Error:', error)
@@ -154,6 +163,7 @@ function deleteCourse(id) {
         .then(response => response.json())
         .then(data => {
             getAllCourses();
+            coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs raderad<h3>`;
         })
         .catch(error => {
             console.log('Error:', error)

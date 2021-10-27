@@ -3,7 +3,7 @@
 // Media queries.
 @mixin tablet-laptop {
   @media screen and (min-width: 901px) and (max-width: 1400px) {
-    @content
+    @content;
   }
 }
 
@@ -14,8 +14,8 @@
 }
 
 @mixin small-phone {
-  @media screen and (min-width: 300px) and (max-width: 899px) {
-    @content
+  @media screen and (max-width: 600px) {
+    @content;
   }
 }
 

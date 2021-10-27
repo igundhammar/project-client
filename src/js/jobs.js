@@ -6,6 +6,8 @@ let jobPlaceInput = document.getElementById('jobplace');
 let jobTitleInput = document.getElementById('jobtitle');
 let jobStartdateInput = document.getElementById('jobstartdate');
 let jobEnddateInput = document.getElementById('jobenddate');
+let jobsMessageEl = document.getElementById('jobsmessage');
+let clearJobsEl = document.getElementById('clearjobs');
 
 showJobsEl.addEventListener('click', getAllJobs);
 addJobButtonEl.addEventListener('click', addJob);
@@ -42,10 +44,11 @@ function getAllJobs() {
                            <button class="deletebutton" onclick="deleteJob('${job.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
-                checkLoggedInUser();
-                coursesFormsEl.style.display = "none";
-                jobsFormsEl.style.display = "block";
-                websitesFormsEl.style.display = "none";
+                if (checkLoggedInUser()) {
+                    coursesFormsEl.style.display = "none";
+                    jobsFormsEl.style.display = "block";
+                    websitesFormsEl.style.display = "none";
+                }
             }))
 }
 
@@ -68,7 +71,9 @@ function addJob(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllJobs();
+            jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
+            clearJobsEl.reset();
         })
         .catch(error => {
             console.log('Error:', error)
@@ -83,6 +88,8 @@ function editJob(place, title, startdate, enddate, id) {
     jobTitleInput.value = title;
     jobStartdateInput.value = startdate;
     jobEnddateInput.value = enddate;
+    jobPlaceInput.focus();
+    addJobButtonEl.disabled = true;
 }
 
 
@@ -105,7 +112,10 @@ function updateJob(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllJobs();
+            jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
+            clearJobsEl.reset();
+            addJobButtonEl.disabled = false;
         })
         .catch(error => {
             console.log('Error:', error)
@@ -124,6 +134,7 @@ function deleteJob(id) {
         .then(response => response.json())
         .then(data => {
             getAllJobs();
+            jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs raderad<h3>`;
         })
         .catch(error => {
             console.log('Error:', error)

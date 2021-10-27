@@ -303,6 +303,7 @@ table {
 
   .edit {
     width: 15%;
+
     @include large-phone {
       width: 35%;
       gap: 3em;
@@ -310,6 +311,10 @@ table {
     @include tablet-laptop {
       width: 40%;
       gap: 3em;
+    }
+
+    @include small-phone {
+    width: 60%;
     }
   }
 }

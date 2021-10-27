@@ -5,6 +5,9 @@ let websiteId = document.getElementById('websiteid');
 let websiteTitleInput = document.getElementById('websitetitle');
 let websiteDescriptionInput = document.getElementById('websitedescription');
 let websiteUrlInput = document.getElementById('websiteurl');
+let websitesMessageEl = document.getElementById('websitesmessage');
+let clearWebsitesEl = document.getElementById('clearwebsites');
+
 
 showWebsitesEl.addEventListener('click', getAllWebsites);
 addWebsiteButtonEl.addEventListener('click', addWebsite);
@@ -37,10 +40,11 @@ function getAllWebsites() {
                            <button class="deletebutton" onclick="deleteWebsite('${website.id}')"><img src="./images/delete.png" alt=""></button></td>
                         </tr>`
                 })
-                checkLoggedInUser();
-                coursesFormsEl.style.display = "none";
-                jobsFormsEl.style.display = "none";
-                websitesFormsEl.style.display = "block";
+                if (checkLoggedInUser()) {
+                    coursesFormsEl.style.display = "none";
+                    jobsFormsEl.style.display = "none";
+                    websitesFormsEl.style.display = "block";
+                }
             }))
 }
 
@@ -66,7 +70,9 @@ function addWebsite(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllWebsites();
+            websitesMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
+            clearWebsitesEl.reset();
         })
         .catch(error => {
             console.log('Error:', error)
@@ -80,6 +86,8 @@ function editWebsite(title, description, url, id) {
     websiteTitleInput.value = title;
     websiteDescriptionInput.value = description;
     websiteUrlInput.value = url;
+    websiteTitleInput.focus();
+    addWebsiteButtonEl.disabled = true;
 }
 
 
@@ -101,7 +109,10 @@ function updateWebsite(e) {
             return response.json();
         })
         .then(data => {
-            location.reload();
+            getAllWebsites();
+            websitesMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
+            clearWebsitesEl.reset();
+            addWebsiteButtonEl.disabled = false;
         })
         .catch(error => {
             console.log('Error:', error)
@@ -119,6 +130,7 @@ function deleteWebsite(id) {
         .then(response => response.json())
         .then(data => {
             getAllWebsites();
+            websitesMessageEl.innerHTML = `<h3 class="okmessage">Kurs raderad<h3>`;
         })
         .catch(error => {
             console.log('Error:', error)
