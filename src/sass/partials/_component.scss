@@ -35,6 +35,11 @@ h4 {
   @extend h3
 }
 
+h5 {
+  font-family: $articles-stack;
+  color: black;
+}
+
 // Go to top button
 #top {
   position: fixed;
