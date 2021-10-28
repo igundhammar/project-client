@@ -4,8 +4,8 @@ This is the project assignment of the course DT173G, Webbutveckling III at Mittu
 
 ## Assignment 💻
 👽 Create a website with HTML, SASS and TS/JS/ES6+.\
-👽 The website should consume the Rest API, `https://github.com/igundhammar/projekt-rest`, also created in this project.\
-👽 The website should also be protected with password and a separate admin log in - `https://github.com/igundhammar/projekt-login`
+👽 The website should consume the Rest API, https://github.com/igundhammar/projekt-rest, also created in this project.\
+👽 The website should also be protected with password and a separate admin log in - https://github.com/igundhammar/projekt-login
 
 
 ## Installation ✔️
