@@ -1,3 +1,7 @@
+// Code by Ida Gundhammar 2021-10-28, student at Mittuniversitetet, HT2020.
+
+
+// Declaring variables
 let showHomeEl = document.getElementById('home');
 let coursesFormsEl = document.getElementById('coursesform');
 let jobsFormsEl = document.getElementById('workform');
@@ -8,10 +12,13 @@ let editButton = document.getElementsByClassName('editbutton');
 let editColumn = document.getElementsByClassName('edit');
 let changeIcons = document.getElementsByClassName('change');
 
+
+// Eventlisteners
 window.addEventListener('load', getStartText);
 showHomeEl.addEventListener('click', getStartText);
 
 
+// Function to show the "about text" on load of the page. Hides forms.
 function getStartText() {
     outputEl.innerHTML = "";
     outputEl.innerHTML =
@@ -40,6 +47,7 @@ function getStartText() {
 }
 
 
+// Checks if there is a auth_token set in localStorage. If the auth_token is null or undefined, do not display any forms or edit/delete buttons and display "log in" link. If there is a token, display "log out" link and buttons/forms.
 function checkLoggedInUser() {
     if (auth_token == null || auth_token == undefined) {
         tokenCheckEl.innerHTML = `<h4><a href="https://studenter.miun.se/~idgu2001/writeable/projekt-login" id="loginlink">Logga in som administratör</a></h4>`;
@@ -68,6 +76,8 @@ function checkLoggedInUser() {
     }
 }
 
+
+// Logout the user. Remove auth_token from localStorage and reload the page.
 function logout() {
     localStorage.removeItem('auth_token');
     location.reload();
@@ -79,7 +89,9 @@ function scrollToTop() {
     window.scrollTo(0, 0);
 }
 
-// Simple jQuery for dropdown-function on mobile menu.
+
+
+// Simple jQuery for dropdown-function on mobile menu. Not used at the moment, but will be implemented.
 $(document).ready(function() {
     $('input[type="checkbox"]').click(function() {
         var inputValue = $(this).attr("value");

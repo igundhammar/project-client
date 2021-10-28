@@ -1,4 +1,4 @@
-// Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
+// Code by Ida Gundhammar 2021-10-28, student at Mittuniversitetet, HT2020.
 
 @import '_mediaqueries.scss';
 // Components that are reused on the page.
@@ -13,6 +13,7 @@ a {
   }
 }
 
+// Headings
 h1 {
   font-size: 3em;
   font-family: $headings-stack;
@@ -34,6 +35,7 @@ h4 {
   @extend h3
 }
 
+// Go to top button
 #top {
   position: fixed;
   bottom: 0;

@@ -1,4 +1,4 @@
-// Code by Ida Gundhammar 2021-09-17, student at Mittuniversitetet, HT2020.
+// Code by Ida Gundhammar 2021-10-28, student at Mittuniversitetet, HT2020.
 
 // Declaring variables
 const {src, dest, parallel, series, watch} = require('gulp');
@@ -28,7 +28,7 @@ function copyHTML() {
 function copyJS() {
     return src(files.jsPath)
         .pipe(concat('main.js'))
-        // .pipe(terser())
+        .pipe(terser())
         .pipe(dest('public/js'));
 }
 
@@ -65,7 +65,3 @@ exports.default = series(
     parallel(copyHTML, copyJS, copyImage, copySass), reloadPage,
     watchTask
 );
-
-/*
-// Set gulp build command to run functions
-exports.build = parallel(copyHTML, copyJS, copyImage, copySass);*/

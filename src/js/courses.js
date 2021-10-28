@@ -1,4 +1,4 @@
-// Code by Ida Gundhammar 2021-10-07, student at Mittuniversitetet, HT2020.
+// Code by Ida Gundhammar 2021-10-28, student at Mittuniversitetet, HT2020.
 
 
 // Declaring variables
@@ -24,7 +24,7 @@ addCourseButtonEl.addEventListener('click', addCourse);
 updateCourseButtonEl.addEventListener('click', updateCourse);
 
 
-// Function to get all courses from database with fetch. Loop result and write table with the data fetched.
+// Function to get all courses from database with fetch. Loop result and write table with the data fetched. Checks if there is a logged in user and displays/not displays edit and delete buttons.
 function getAllCourses() {
     // http://localhost/writeable/projekt-restapi/courses.php
     // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php
@@ -66,7 +66,7 @@ function getAllCourses() {
 }
 
 
-// Function to add a new course. Get values from inputs and use method POST to post data to the database.
+// Function to add a new course. Get values from inputs and use method POST to post data to the database. Writes either error or ok message, resets the form and calls getAllCourses to refresh the table.
 function addCourse(e) {
     e.preventDefault();
     let courseCodeValue = courseCodeInput.value;
@@ -74,34 +74,38 @@ function addCourse(e) {
     let courseUniversityValue = courseUniversityInput.value;
     let courseStartdateValue = courseStartdateInput.value;
     let courseEnddateValue = courseEnddateInput.value;
-    let course = {
-        "code": courseCodeValue,
-        "name": courseNameValue,
-        "university": courseUniversityValue,
-        "startdate": courseStartdateValue,
-        "enddate": courseEnddateValue
-    };
-    // http://localhost/writeable/projekt-restapi/courses.php
-    // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php
-    fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php?token=' + auth_token, {
-        method: 'POST',
-        body: JSON.stringify(course),
-    })
-        .then(response => () => {
-            return response.json();
+    if (courseCodeValue == "" || courseNameValue == "" || courseUniversityValue == "" || courseStartdateValue == "" || courseEnddateValue == "") {
+        coursesMessageEl.innerHTML = `<h3 class="errormessage">Fyll i alla fält<h3>`;
+    } else {
+        let course = {
+            "code": courseCodeValue,
+            "name": courseNameValue,
+            "university": courseUniversityValue,
+            "startdate": courseStartdateValue,
+            "enddate": courseEnddateValue
+        };
+        // http://localhost/writeable/projekt-restapi/courses.php
+        // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php
+        fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php?token=' + auth_token, {
+            method: 'POST',
+            body: JSON.stringify(course),
         })
-        .then(data => {
-            getAllCourses();
-            coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
-            clearCoursesEl.reset();
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
+            .then(response => () => {
+                return response.json();
+            })
+            .then(data => {
+                getAllCourses();
+                coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
+                clearCoursesEl.reset();
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
+    }
 }
 
 
-// Function to edit an existing course. This function sets the inputs value to the data fetched from each course in getAllCourses.
+// Function to edit an existing course. This function sets the inputs value to the data from the row clicked in the table. Sets focus to the edit form and disables "add course" button to prevent user from accidentally add the same course twice.
 function editCourse(code, name, university, startdate, enddate, id) {
     courseId.value = id;
     courseCodeInput.value = code;
@@ -115,7 +119,7 @@ function editCourse(code, name, university, startdate, enddate, id) {
 }
 
 
-// Function to update an existing course. Gets values from inputs and uses method PUT to update the given course (with id). Then calls getAllCourses to write all courses again to the page.
+// Function to update an existing course. Gets values from inputs and uses method PUT to update the given course (with id). Then calls getAllCourses to refresh the table with new data.
 function updateCourse(e) {
     e.preventDefault();
     let courseIdValue = courseId.value;
@@ -124,36 +128,39 @@ function updateCourse(e) {
     let courseUniversityValue = courseUniversityInput.value;
     let courseStartdateValue = courseStartdateInput.value;
     let courseEnddateValue = courseEnddateInput.value;
-    let course = {
-        "code": courseCodeValue,
-        "name": courseNameValue,
-        "university": courseUniversityValue,
-        "startdate": courseStartdateValue,
-        "enddate": courseEnddateValue
-    };
-    // http://localhost/writeable/projekt-restapi/courses.php
-    // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php
-    fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php?id=' + courseIdValue + '&token=' + auth_token, {
-        method: 'PUT',
-        body: JSON.stringify(course),
-    })
-        .then(response => () => {
-            return response.json();
+    if (courseCodeValue == "" || courseNameValue == "" || courseUniversityValue == "" || courseStartdateValue == "" || courseEnddateValue == "") {
+        coursesMessageEl.innerHTML = `<h3 class="errormessage">Fyll i alla fält<h3>`;
+    } else {
+        let course = {
+            "code": courseCodeValue,
+            "name": courseNameValue,
+            "university": courseUniversityValue,
+            "startdate": courseStartdateValue,
+            "enddate": courseEnddateValue
+        };
+        // http://localhost/writeable/projekt-restapi/courses.php
+        // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php
+        fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php?id=' + courseIdValue + '&token=' + auth_token, {
+            method: 'PUT',
+            body: JSON.stringify(course),
         })
-        .then(data => {
-            getAllCourses();
-            coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
-            clearCoursesEl.reset();
-            addCourseButtonEl.disabled = false;
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
-
+            .then(response => () => {
+                return response.json();
+            })
+            .then(data => {
+                getAllCourses();
+                coursesMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
+                clearCoursesEl.reset();
+                addCourseButtonEl.disabled = false;
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
+    }
 }
 
 
-// Function to delete a course. Gets the course id from button and uses method DELETE to delete the course fom the database. Then calls getAllCourses to write all courses again to the page.
+// Function to delete a course. Gets the course id from button and uses method DELETE to delete the course fom the database. Then calls getAllCourses to refresh the table with new data.
 function deleteCourse(id) {
     // http://localhost/writeable/projekt-restapi/courses.php
     // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/courses.php

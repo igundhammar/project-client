@@ -1,3 +1,6 @@
+// Code by Ida Gundhammar 2021-10-28, student at Mittuniversitetet, HT2020.
+
+// Declaring variables
 let showJobsEl = document.getElementById('jobs');
 let addJobButtonEl = document.getElementById('submitJob');
 let updateJobButtonEl = document.getElementById('updateJob');
@@ -9,15 +12,16 @@ let jobEnddateInput = document.getElementById('jobenddate');
 let jobsMessageEl = document.getElementById('jobsmessage');
 let clearJobsEl = document.getElementById('clearjobs');
 
+
+// Eventlisteners
 showJobsEl.addEventListener('click', getAllJobs);
 addJobButtonEl.addEventListener('click', addJob);
 updateJobButtonEl.addEventListener('click', updateJob);
 
 
 
-// Jobs
+// Function to get all jobs from database with fetch. Loop result and write table with the data fetched. Checks if there is a logged in user and displays/not displays edit and delete buttons.
 function getAllJobs() {
-
     // http://localhost/writeable/projekt-restapi/workexperiences.php
     // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
     fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php')
@@ -53,35 +57,39 @@ function getAllJobs() {
 }
 
 
-// Add job
+// Function to add a new job. Get values from inputs and use method POST to post data to the database. Writes either error or ok message, resets the form and calls getAllJobs to refresh the table.
 function addJob(e) {
     e.preventDefault();
     let jobPlaceValue = jobPlaceInput.value;
     let jobTitleValue = jobTitleInput.value;
     let jobStartdateValue = jobStartdateInput.value;
     let jobEnddateValue = jobEnddateInput.value;
-    let job = {"place" : jobPlaceValue, "title" : jobTitleValue, "startdate" : jobStartdateValue, "enddate" : jobEnddateValue};
-    // http://localhost/writeable/projekt-restapi/workexperiences.php
-    // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
-    fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php?token=' + auth_token, {
-        method: 'POST',
-        body: JSON.stringify(job),
-    })
-        .then(response => () => {
-            return response.json();
+    if (jobPlaceValue == "" || jobTitleValue == "" || jobStartdateValue == "" || jobEnddateValue == "") {
+        jobsMessageEl.innerHTML = `<h3 class="errormessage">Fyll i alla fält<h3>`;
+    } else {
+        let job = {"place" : jobPlaceValue, "title" : jobTitleValue, "startdate" : jobStartdateValue, "enddate" : jobEnddateValue};
+        // http://localhost/writeable/projekt-restapi/workexperiences.php
+        // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
+        fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php?token=' + auth_token, {
+            method: 'POST',
+            body: JSON.stringify(job),
         })
-        .then(data => {
-            getAllJobs();
-            jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
-            clearJobsEl.reset();
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
+            .then(response => () => {
+                return response.json();
+            })
+            .then(data => {
+                getAllJobs();
+                jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs tillagd<h3>`;
+                clearJobsEl.reset();
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
+    }
 }
 
 
-// Edit job
+// Function to edit an existing job. This function sets the inputs value to the data from the row clicked in the table. Sets focus to the edit form and disables "add job" button to prevent user from accidentally add the same job twice.
 function editJob(place, title, startdate, enddate, id) {
     jobId.value = id;
     jobPlaceInput.value = place;
@@ -93,7 +101,7 @@ function editJob(place, title, startdate, enddate, id) {
 }
 
 
-// Update job
+// Function to update an existing job. Gets values from inputs and uses method PUT to update the given job (with id). Then calls getAllJobs to refresh the table with new data.
 function updateJob(e) {
     e.preventDefault();
     let jobIdValue = jobId.value;
@@ -101,30 +109,39 @@ function updateJob(e) {
     let jobTitleValue = jobTitleInput.value;
     let jobStartdateValue = jobStartdateInput.value;
     let jobEnddateValue = jobEnddateInput.value;
-    let job = {"place" : jobPlaceValue, "title" : jobTitleValue, "startdate" : jobStartdateValue, "enddate" : jobEnddateValue};
-    // http://localhost/writeable/projekt-restapi/workexperiences.php
-    // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
-    fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php?id=' + jobIdValue + '&token=' + auth_token, {
-        method: 'PUT',
-        body: JSON.stringify(job),
-    })
-        .then(response => () => {
-            return response.json();
+    if (jobPlaceValue == "" || jobTitleValue == "" || jobStartdateValue == "" || jobEnddateValue == "") {
+        jobsMessageEl.innerHTML = `<h3 class="errormessage">Fyll i alla fält<h3>`;
+    } else {
+        let job = {
+            "place": jobPlaceValue,
+            "title": jobTitleValue,
+            "startdate": jobStartdateValue,
+            "enddate": jobEnddateValue
+        };
+        // http://localhost/writeable/projekt-restapi/workexperiences.php
+        // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
+        fetch('https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php?id=' + jobIdValue + '&token=' + auth_token, {
+            method: 'PUT',
+            body: JSON.stringify(job),
         })
-        .then(data => {
-            getAllJobs();
-            jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
-            clearJobsEl.reset();
-            addJobButtonEl.disabled = false;
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
+            .then(response => () => {
+                return response.json();
+            })
+            .then(data => {
+                getAllJobs();
+                jobsMessageEl.innerHTML = `<h3 class="okmessage">Kurs uppdaterad<h3>`;
+                clearJobsEl.reset();
+                addJobButtonEl.disabled = false;
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
+    }
 
 }
 
 
-// Delete job
+// Function to delete a job. Gets the job id from button and uses method DELETE to delete the job fom the database. Then calls getAllJobs to refresh the table with new data.
 function deleteJob(id) {
     // http://localhost/writeable/projekt-restapi/workexperiences.php
     // https://studenter.miun.se/~idgu2001/writeable/projekt-restapi/workexperiences.php
