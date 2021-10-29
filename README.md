@@ -22,7 +22,7 @@ Then simply run the command `gulp` to create the public folder of the project an
 There are several tasks in the project that will execute different tasks. Some of them concatenate, minimize and transfer files (SASS/CSS and JS)
 and the others launch servers and browser reloads, as well as a watch function to discover which files to transfer.
 
-If you want access to test the website with POST/PUT/DELETE, you can contact me and I will provide you with the user information to log in.
+If you want access to test the website with CREATE/UPDATE/DELETE, you can contact me and I will provide you with the user information to log in.
 
 Start coding! 🙂
 
