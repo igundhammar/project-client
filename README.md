@@ -1,5 +1,5 @@
 # Project Client 👽
-This is the project assignment of the course DT173G, Webbutveckling III at Mittuniversitetet HT20.
+This is the project assignment of the course DT173G, Webbutveckling III at Mittuniversitetet HT20.\
 The website created for this project: https://studenter.miun.se/~idgu2001/dt173g/projekt/public/
 
 
