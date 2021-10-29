@@ -24,8 +24,16 @@ function getStartText() {
     outputEl.innerHTML =
         `<h2>Hej! 👋</h2>
             <p>Kul att du har hittat hit!</p>
-                <p>Jag gillar skidor och skoter. Och hund och sånt. Och så gillar jag webbutveckling, åtminstone när det går bra.
-                Det var det. Hejdå!</p>
+                <p>Jag är en student på 26 år som är bosatt i Duved, ca 1 mil utanför Åre. </p>
+                <p>Till vardags kan ni hitta mig ute på skotern, skidor eller till fots på ett fjäll i närområdet. ⛷️ 
+                <br>På regniga dagar brukar jag se spela spel eller se på film tillsammans med min sambo och vår Finska Lapphund.</p>
+               
+                
+                <p>Ett nyfunnet intresse är att koda och därför gav jag mig in i programmeringsvärlden. För tillfället studerar jag Webbutveckling på Mittuniversitetet
+                och tar examen juni 2022. 👩‍💻
+                <br>Denna webbplatsen visar mina tidigare erfarenheter med jobb, kurser i detta program och webbplatser jag gjort i samband med kurserna.</p>
+                
+                <p>Har du frågor eller är nyfiken på mina projekt så går det bra att kontakta mig eller bara tjuvkika på min Git! 😊️</p>
                 <p>P.S jag har sjukt bra musiksmak! 🎵 🎶</p>
                 <h3>Mina färdigheter</h3>
                   <div class="skills">
