@@ -33,6 +33,9 @@ header {
     width: 55%;
     text-align: center;
     margin-top: 10em;
+    @include laptop {
+      width: 70%;
+    }
     @include large-phone {
       width: 95%;
       margin-top: 0.5em;
@@ -120,6 +123,9 @@ header {
   width: 60%;
   max-width: 960px;
   text-align: center;
+  @include laptop {
+    width: 65%;
+  }
   @include large-phone {
     width: 95%;
     margin: 3em auto;
