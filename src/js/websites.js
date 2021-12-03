@@ -28,22 +28,16 @@ function getAllWebsites() {
             .then(data => {
                 outputEl.innerHTML = "";
                 outputEl.innerHTML =
-                    `<h2>Webbplatser</h2>
-                        <tr class="desktopheadings">
-                        <th>Titel</th>
-                        <th>Beskrivning</th>
-                        <th>Länk</th>
-                        <th class="edit">Ändra</th>
-                    </tr>`
+                    `<h2>Webbplatser</h2>`
                 data.forEach(website => {
                     outputEl.innerHTML +=
-                        `<tr>
-                           <td><span class="mobileheading">Titel: </span>&nbsp; ${website.title} </td>
-                           <td><span class="mobileheading">Beskrivning: </span>&nbsp; ${website.description} </td>
-                           <td><span class="mobileheading">Länk: </span>&nbsp;<a href="${website.url}">Länk</a></td>
-                           <td class="change"><button class="editbutton" onclick="editWebsite('${website.title}', '${website.description}', '${website.url}', '${website.id}')"><img src="./images/edit.png" alt=""></button>
+                        `<div class="course">
+                           <h3>${website.title}</h3>
+                           <p>${website.description}</p>
+                           <p><a href="${website.url}" class="visit">Besök</a></p>
+                           <span class="edit"><button class="editbutton" onclick="editWebsite('${website.title}', '${website.description}', '${website.url}', '${website.id}')"><img src="./images/edit.png" alt=""></button>
                            <button class="deletebutton" onclick="deleteWebsite('${website.id}')"><img src="./images/delete.png" alt=""></button></td>
-                        </tr>`
+                        </div>`
                 })
                 if (checkLoggedInUser()) {
                     coursesFormsEl.style.display = "none";

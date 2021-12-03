@@ -29,24 +29,16 @@ function getAllJobs() {
             .then(data => {
                 outputEl.innerHTML = "";
                 outputEl.innerHTML =
-                    `<h2>Mina arbetserfarenheter</h2>
-                        <tr class="desktopheadings">
-                        <th>Företag</th>
-                        <th>Titel</th>
-                        <th>Startdatum</th>
-                        <th>Slutdatum</th>
-                        <th class="edit">Ändra</th>
-                    </tr>`
+                    `<h2>Mina arbetserfarenheter</h2>`
                 data.forEach(job => {
                     outputEl.innerHTML +=
-                        `<tr>
-                           <td><span class="mobileheading">Företag: </span>&nbsp; ${job.place} </td>
-                           <td><span class="mobileheading">Titel: </span>&nbsp; ${job.title} </td>
-                           <td><span class="mobileheading">Startdatum </span> &nbsp;${job.startdate} </td>
-                           <td><span class="mobileheading">Slutdatum: </span>&nbsp; ${job.enddate} </td>
-                           <td class="edit"><button class="editbutton" onclick="editJob('${job.place}', '${job.title}', '${job.startdate}', '${job.enddate}', '${job.id}')"><img src="./images/edit.png" alt=""></button>
+                        `<div class="course">
+                           <h3>${job.place}</h3>
+                           <p>${job.title}</p>
+                           <p>${job.startdate} - ${job.enddate}</p>
+                           <span class="edit"><button class="editbutton" onclick="editJob('${job.place}', '${job.title}', '${job.startdate}', '${job.enddate}', '${job.id}')"><img src="./images/edit.png" alt=""></button>
                            <button class="deletebutton" onclick="deleteJob('${job.id}')"><img src="./images/delete.png" alt=""></button></td>
-                        </tr>`
+                        </div>`
                 })
                 if (checkLoggedInUser()) {
                     coursesFormsEl.style.display = "none";

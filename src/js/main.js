@@ -22,11 +22,11 @@ showHomeEl.addEventListener('click', getStartText);
 function getStartText() {
     outputEl.innerHTML = "";
     outputEl.innerHTML =
-        `<h2>Hej! 👋</h2>
-            <p>Kul att du har hittat hit!</p>
+        `<h2>Hej!</h2>
+            <p>Kul att du har hittat hit! 👋</p>
                 <p>Jag är en student på 26 år som är bosatt i Duved, ca 1 mil utanför Åre. </p>
                 <p>Till vardags kan ni hitta mig ute på skotern, skidor eller till fots på ett fjäll i närområdet. ⛷️ 
-                <br>På regniga dagar brukar jag se spela spel eller se på film tillsammans med min sambo och vår Finska Lapphund.</p>
+                <br>På regniga dagar brukar jag spela spel eller se på film tillsammans med min sambo och vår Finska Lapphund.</p>
                
                 
                 <p>Ett nyfunnet intresse är att koda och därför gav jag mig in i programmeringsvärlden. För tillfället studerar jag Webbutveckling på Mittuniversitetet

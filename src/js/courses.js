@@ -33,26 +33,17 @@ function getAllCourses() {
             .then(data => {
                 outputEl.innerHTML = "";
                 outputEl.innerHTML =
-                    `<h2>Kurser</h2>
-                        <tr class="desktopheadings">
-                        <th>Kurskod</th>
-                        <th>Kursnamn</th>
-                        <th>Lärosäte</th>
-                        <th>Startdatum</th>
-                        <th>Slutdatum</th>
-                        <th class="edit">Ändra</th>
-                    </tr>`
+                    `<h2>Kurser</h2>`
                 data.forEach(course => {
                     outputEl.innerHTML +=
-                        `<tr>
-                           <td><span class="mobileheading">Kurskod:</span>&nbsp;${course.code} </td>
-                           <td><span class="mobileheading">Kursnamn: </span> &nbsp;${course.name} </td>
-                           <td><span class="mobileheading">Lärosäte: </span>&nbsp; ${course.university} </td>
-                           <td><span class="mobileheading">Startdatum: </span>&nbsp;${course.startdate}</td>
-                           <td><span class="mobileheading">Slutdatum: </span>&nbsp;${course.enddate}</td>
-                           <td class="edit"><button class="editbutton" onclick="editCourse('${course.code}', '${course.name}', '${course.university}', '${course.startdate}','${course.enddate}', '${course.id}' )"><img src="./images/edit.png" alt=""></button>
-                           <button class="deletebutton" onclick="deleteCourse('${course.id}')"><img src="./images/delete.png" alt=""></button></td>
-                        </tr>`
+                        `
+                           <div class="course">
+                           <h3>${course.name}</h3>
+                           <p>${course.code} på ${course.university}</p>
+                           <p>${course.startdate} - ${course.enddate}</p>
+                           <span class="edit"><button class="editbutton" onclick="editCourse('${course.code}', '${course.name}', '${course.university}', '${course.startdate}','${course.enddate}', '${course.id}' )"><img src="./images/edit.png" alt=""></button>         
+                            <button class="deletebutton" onclick="deleteCourse('${course.id}')"><img src="./images/delete.png" alt=""></button>
+                            </div>`
                 })
                 if (checkLoggedInUser()) {
                     coursesFormsEl.style.display = "block";
